@@ -102,7 +102,9 @@ function Set-Man {
     $Global:paths = @{}
     foreach($size in $sizes) {
         Get-Imagepath
-        $paths.add( $size, $Global:imgpath )
+        if ($path -ne ""){
+            $paths.add( $size, $path )
+        }
     }
 }
 function Set-Auto {
