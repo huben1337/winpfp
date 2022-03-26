@@ -2,7 +2,7 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
     Start-Process powershell "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     exit
 }
-#CTT's winget chechink method.(https://github.com/ChrisTitusTech)
+#CTT's winget cheching method.(https://github.com/ChrisTitusTech)
 if (!(Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe)){
     # Installing winget from the Microsoft Store
     Write-Host "Winget not found, installing it now."
