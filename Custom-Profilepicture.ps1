@@ -1,3 +1,4 @@
+if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) { Start-Process pwsh "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs; exit }
 $Global:sizes = @('32','40','48','64','96','192','208','240','424','448','1080')
 $Global:sid = (Get-LocalUser -Name $env:USERNAME).SID.Value
 function Show-Menu {
