@@ -3,7 +3,7 @@ Custom Windows 10 account picture. Enables transparency by using the png file fo
 # Requirements
 Latest version of PowerShell is required.
 Get it here: https://github.com/PowerShell/PowerShell
-Or let the script handle installing it.
+Or let the script handle installing it. (soon)
 # Usage
 1. Download the script: https://raw.githubusercontent.com/kgb64/winpfp/main/Custom-Profilepicture.ps1
 2. Run it.
