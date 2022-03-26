@@ -1,5 +1,5 @@
 # winpfp
-Custom Windows 10 account picture.
+Custom Windows 10 account picture. Enables transparency by using the png file format instead of jpg.
 # Requirements
 Latest version of PowerShell is required.
 Get it here: https://github.com/PowerShell/PowerShell
