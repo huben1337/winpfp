@@ -1,4 +1,28 @@
-if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) { Start-Process pwsh "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs; exit }
+if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Start-Process powershell "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    exit
+}
+#CTT's winget chechink method.(https://github.com/ChrisTitusTech)
+if (!(Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe)){
+    # Installing winget from the Microsoft Store
+    Write-Host "Winget not found, installing it now."
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Winget... Please Wait"
+    Start-Process "ms-appinstaller:?source=https://aka.ms/getwinget"
+    $nid = (Get-Process AppInstaller).Id
+    Wait-Process -Id $nid
+    Write-Host Winget Installed
+    $ResultText.text = "`r`n" +"`r`n" + "Winget Installed - Ready for Next Task"
+}
+
+if (!(winget list --id "Microsoft.PowerShell")[3].contains("Microsoft.PowerShell")) {
+    winget.exe install --id "Microsoft.PowerShell"
+}
+
+if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator") -or ($PSVersionTable.PSEdition -ne "Core")) {
+    Start-Process pwsh "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    exit
+}
+
 $Global:sizes = @('32','40','48','64','96','192','208','240','424','448','1080')
 $Global:sid = (Get-LocalUser -Name $env:USERNAME).SID.Value
 function Show-Menu {
