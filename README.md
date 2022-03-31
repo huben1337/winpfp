@@ -6,5 +6,6 @@ Get it here: https://github.com/PowerShell/PowerShell.
 Or let the script handle installing it.
 ## Usage
 1. Download the script
-<a href="https://raw.githubusercontent.com/huben1337/winpfp/main/Custom-Profilepicture.ps1" download> </a>
+<a href="https://raw.githubusercontent.com/huben1337/winpfp/main/Custom-Profilepicture.ps1" download>
+</a>
 3. Run the script with PowerShell.
