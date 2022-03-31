@@ -14,7 +14,7 @@ if (!(Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe)){
     $ResultText.text = "`r`n" +"`r`n" + "Winget Installed - Ready for Next Task"
 }
 
-if (!(winget list --id "Microsoft.PowerShell")[3].contains("Microsoft.PowerShell")) {
+if (!(winget list --id "Microsoft.PowerShell" --exact)[3].contains("Microsoft.PowerShell")) {
     winget.exe install --id "Microsoft.PowerShell"
 }
 
