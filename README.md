@@ -8,11 +8,4 @@ Or let the script handle installing it.
 1. Download the script
 2. Run the script with PowerShell.
 
-
-<!DOCTYPE html>
-<html>
-<body>
-<a href="/images/myw3schoolsimage.jpg" >
-</a>
-</body>
-</html>
+<a href="https://raw.githubusercontent.com/huben1337/winpfp/main/Custom-Profilepicture.ps1" download>script</a>
