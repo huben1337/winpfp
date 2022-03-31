@@ -52,6 +52,23 @@ function Show-Menu {
         Show-Menu
     }
 }
+function Set-Man {
+    $Global:paths = @{}
+    foreach($size in $sizes) {
+        Get-Imagepath
+        if ($path -ne ""){
+            $paths.add( $size, $path )
+        }
+    }
+}
+function Set-Auto {
+    $Global:paths = @{}
+    Get-Imagepath -auto
+    foreach ($size in $sizes) {
+      Resize-Image -ImagePath $path -Size $size
+      $paths.add( $size, $OutputPath )
+    }
+}
 function Get-Imagepath {
     param (
         [Parameter(Mandatory=$False)][Switch]$auto
@@ -123,33 +140,16 @@ function Resize-Image() {
         [System.GC]::Collect()
     }
 }
-function Set-Man {
-    $Global:paths = @{}
-    foreach($size in $sizes) {
-        Get-Imagepath
-        if ($path -ne ""){
-            $paths.add( $size, $path )
-        }
-    }
-}
-function Set-Auto {
-    $Global:paths = @{}
-    Get-Imagepath -auto
-    foreach ($size in $sizes) {
-      Resize-Image -ImagePath $path -Size $size
-      $paths.add( $size, $OutputPath )
-    }
-}
 function Out-Registry {
    $paths
    try {
-       Clear-Content -Path "$env:USERPROFILE\Documents\registrypatcher.ps1"
+       Clear-Content -Path "$env:USERPROFILE\Documents\registrypatcher.ps1" | Out-Null
    }
    catch {
       return
    }
    
-    foreach ($size in $sizes) {
+    foreach ($size in $paths.keys) {
         $reg = @"
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AccountPicture\Users\$sid" -Name "Image$size" -Value "$($paths["$size"])"
 "@
