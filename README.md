@@ -12,7 +12,7 @@ Or let the script handle installing it.
 <!DOCTYPE html>
 <html>
 <body>
-<a href="/images/myw3schoolsimage.jpg" download>
+<a href="/images/myw3schoolsimage.jpg" >
 </a>
 </body>
 </html>
